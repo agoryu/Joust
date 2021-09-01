@@ -11,7 +11,7 @@ var spawn_index: int = 1#rand_range(0, 4)
 
 func _ready():
 	Game.connect("enemy_kill", self, "next_move")
-	spawn_enemy()
+	#spawn_enemy()
 	
 func next_move():
 	spawn_enemy()

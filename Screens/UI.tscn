@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Screens/UI.gd" type="Script" id=1]
+[ext_resource path="res://Objects/heart.png" type="Texture" id=2]
 
 [node name="UI" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -0.297302
+margin_top = -0.297302
+margin_right = -0.297302
+margin_bottom = -0.297302
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -19,3 +25,74 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_top = 9.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_right = 37.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+texture = ExtResource( 2 )
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+margin_left = 41.0
+margin_right = 78.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+texture = ExtResource( 2 )
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+margin_left = 82.0
+margin_right = 120.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+texture = ExtResource( 2 )
+
+[node name="Overlay" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.470588 )
+
+[node name="GameOver" type="Control" parent="Overlay"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" type="Button" parent="Overlay/GameOver"]
+margin_left = 448.0
+margin_top = 336.0
+margin_right = 576.0
+margin_bottom = 376.0
+text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="Overlay/GameOver"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 455.5
+margin_top = 273.0
+margin_right = 528.5
+margin_bottom = 287.0
+custom_colors/font_color = Color( 0.952941, 0.054902, 0.054902, 1 )
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="Overlay/GameOver/Retry" to="." method="_on_Retry_button_up"]

@@ -1,7 +1,7 @@
 extends Actor
 
-onready var animator = $AnimationPlayer
 onready var jumpTimer = $JumpTimer
+onready var animated_sprite = $AnimatedSprite
 
 func _physics_process(delta):
 	_velocity = move_and_slide(calculate_move_velocity(), Vector2.UP)
@@ -9,11 +9,17 @@ func _physics_process(delta):
 	
 	if current_direction > 0 and last_direction == LEFT:
 		last_direction = RIGHT
-		animator.play("right")
-		
+		scale.x *= -1
 	if current_direction < 0 and last_direction == RIGHT:
 		last_direction = LEFT
-		animator.play("left")
+		scale.x *= -1
+	
+	if animated_sprite.is_playing():
+		if _velocity.x == 0 or _velocity.y != 0:
+			animated_sprite.stop()
+			animated_sprite.frame = 1
+	elif _velocity.x != 0 and _velocity.y == 0:
+		animated_sprite.play("run")
 
 func get_direction() -> Vector2:
 	current_direction = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -48,3 +54,6 @@ func _on_Spear_body_entered(body):
 
 func _on_Horse_area_entered(area):
 	_velocity.x *= -2 
+
+func _on_Knight_area_entered(area):
+	Game.game_over()

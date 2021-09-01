@@ -115,6 +115,7 @@ self_modulate = Color( 0.52549, 0.137255, 0.537255, 1 )
 shape = SubResource( 4 )
 
 [node name="Spear" type="Area2D" parent="."]
+pause_mode = 1
 position = Vector2( 16, 4.76837e-07 )
 collision_layer = 16
 collision_mask = 32

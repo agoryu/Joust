@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Screens/Menu.gd" type="Script" id=1]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_top = 128.0
+margin_right = 64.0
+margin_bottom = 160.0
+custom_colors/font_color = Color( 0.933333, 0.941176, 0.0431373, 1 )
+text = "Joust"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.0
+margin_top = -108.0
+margin_right = 104.0
+margin_bottom = 92.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+margin_right = 208.0
+margin_bottom = 47.0
+size_flags_vertical = 3
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scores" type="Button" parent="VBoxContainer"]
+margin_top = 51.0
+margin_right = 208.0
+margin_bottom = 98.0
+size_flags_vertical = 3
+text = "Scores"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+margin_top = 102.0
+margin_right = 208.0
+margin_bottom = 149.0
+size_flags_vertical = 3
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+margin_top = 153.0
+margin_right = 208.0
+margin_bottom = 200.0
+size_flags_vertical = 3
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="VBoxContainer/Start" to="." method="_on_Start_button_up"]
+[connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_Quit_button_up"]
