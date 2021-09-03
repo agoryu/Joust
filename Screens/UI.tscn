@@ -19,6 +19,7 @@ __meta__ = {
 [node name="Score" type="Label" parent="."]
 margin_right = 128.0
 margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 align = 2
 valign = 1
@@ -29,31 +30,30 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -120.0
+margin_left = -95.7026
 margin_top = 9.0
+margin_right = 0.297363
 margin_bottom = 32.0
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-margin_right = 37.0
+[node name="Heart1" type="TextureRect" parent="HBoxContainer"]
+margin_right = 25.0
 margin_bottom = 23.0
-size_flags_horizontal = 3
 texture = ExtResource( 2 )
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
-margin_left = 41.0
-margin_right = 78.0
+[node name="Heart2" type="TextureRect" parent="HBoxContainer"]
+margin_left = 29.0
+margin_right = 54.0
 margin_bottom = 23.0
-size_flags_horizontal = 3
 texture = ExtResource( 2 )
 
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
-margin_left = 82.0
-margin_right = 120.0
+[node name="Heart3" type="TextureRect" parent="HBoxContainer"]
+margin_left = 58.0
+margin_right = 83.0
 margin_bottom = 23.0
-size_flags_horizontal = 3
 texture = ExtResource( 2 )
 
 [node name="Overlay" type="ColorRect" parent="."]

@@ -13,6 +13,7 @@ export var NB_JUMP_MAX = 5
 const RIGHT: int = 1
 const LEFT: int = -1
 
+var is_jump: bool = false
 var last_direction: int = RIGHT
 var current_direction = 0
 var _velocity: Vector2 = Vector2.ZERO

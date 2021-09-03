@@ -2,24 +2,14 @@ extends Actor
 
 onready var jumpTimer = $JumpTimer
 onready var animated_sprite = $AnimatedSprite
+onready var audio_walk = $AudioWalk
+onready var audio_fly = $AudioFly
 
 func _physics_process(delta):
 	_velocity = move_and_slide(calculate_move_velocity(), Vector2.UP)
 	position.x = wrapf(position.x, 0, screen_size.x)
-	
-	if current_direction > 0 and last_direction == LEFT:
-		last_direction = RIGHT
-		scale.x *= -1
-	if current_direction < 0 and last_direction == RIGHT:
-		last_direction = LEFT
-		scale.x *= -1
-	
-	if animated_sprite.is_playing():
-		if _velocity.x == 0 or _velocity.y != 0:
-			animated_sprite.stop()
-			animated_sprite.frame = 1
-	elif _velocity.x != 0 and _velocity.y == 0:
-		animated_sprite.play("run")
+	switch_direction()
+	animate_sprite()
 
 func get_direction() -> Vector2:
 	current_direction = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -42,12 +32,37 @@ func calculate_move_velocity():
 		out.y = speed.y * direction.y
 		nb_jump -= 1
 		jumpTimer.start()
-		
-	if is_on_floor() and nb_jump <= 0:
-		nb_jump = NB_JUMP_MAX
+		audio_fly.play()
 		
 	return out
 
+func switch_direction():
+	if current_direction > 0 and last_direction == LEFT:
+		last_direction = RIGHT
+		scale.x *= -1
+	if current_direction < 0 and last_direction == RIGHT:
+		last_direction = LEFT
+		scale.x *= -1
+		
+func animate_sprite():
+	if animated_sprite.is_playing():
+		if _velocity.x == 0 or _velocity.y != 0:
+			animated_sprite.stop()
+			animated_sprite.frame = 1
+	elif _velocity.x != 0 and _velocity.y == 0:
+		animated_sprite.play("run")
+	
+	# First jump
+	if !is_jump:
+		if !is_on_floor():
+			animated_sprite.play("jump")
+			$AnimatedSprite/Horse/HorseCollision.scale.y = 0.5
+			is_jump = true
+	elif is_on_floor():
+		animated_sprite.play("run")
+		$AnimatedSprite/Horse/HorseCollision.scale.y = 1
+		is_jump = false
+		nb_jump = NB_JUMP_MAX
 
 func _on_Spear_body_entered(body):
 	body.die()
@@ -56,4 +71,8 @@ func _on_Horse_area_entered(area):
 	_velocity.x *= -2 
 
 func _on_Knight_area_entered(area):
-	Game.game_over()
+	Game.player_touch()
+
+func _on_AnimatedSprite_frame_changed():
+	if !audio_walk.playing:
+		audio_walk.play()

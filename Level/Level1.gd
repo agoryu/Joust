@@ -11,14 +11,14 @@ var spawn_index: int = 1#rand_range(0, 4)
 
 func _ready():
 	Game.connect("enemy_kill", self, "next_move")
-	#spawn_enemy()
+	spawn_enemy()
 	
 func next_move():
 	spawn_enemy()
 	
 func spawn_enemy():
 	var position_enemy = spawn_locations[spawn_index].position
-	var enemy = Ostrich_Enemy.instance()
+	var enemy = Puppet.instance()
 	#if Game.score <= 5:
 	#	enemy = Puppet.instance() as Enemy
 	#else:
