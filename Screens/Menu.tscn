@@ -83,5 +83,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="button_up" from="VBoxContainer/Start" to="." method="_on_Start_button_up"]
 [connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_Quit_button_up"]

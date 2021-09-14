@@ -15,7 +15,7 @@ func get_direction() -> Vector2:
 	current_direction = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	return Vector2(
 		current_direction,
-		-1.0 if Input.get_action_strength("ui_up") else 1.0 #and is_on_floor() else 1.0
+		-1.0 if Input.get_action_strength("ui_up") || Input.get_action_strength("ui_accept") else 1.0 #and is_on_floor() else 1.0
 	)
 
 func calculate_move_velocity():
@@ -66,6 +66,7 @@ func animate_sprite():
 
 func _on_Spear_body_entered(body):
 	body.die()
+	Game.shake_screen()
 
 func _on_Horse_area_entered(area):
 	_velocity.x *= -2 

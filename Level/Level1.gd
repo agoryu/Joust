@@ -6,6 +6,9 @@ onready var spawn_locations = [$Spawn1, $Spawn2, $Spawn3, $Spawn4]
 onready var Puppet = load("res://Actors/Puppet.tscn")
 onready var Armor_Puppet = load("res://Actors/ArmorPuppet.tscn")
 onready var Ostrich_Enemy = load("res://Actors/OstrichEnemy.tscn")
+onready var background = $Background
+
+var time : float = 90.0
 
 var spawn_index: int = 1#rand_range(0, 4)
 
@@ -31,3 +34,8 @@ func spawn_enemy():
 	enemy.position = position_enemy
 	add_child(enemy)
 	spawn_index = (spawn_index + 1) % 4
+
+func _process(delta):
+	time += 0.001
+	time = fmod(time, 240.0)
+	background.material.set_shader_param("time", time)
