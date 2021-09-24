@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Screens/UI.gd" type="Script" id=1]
 [ext_resource path="res://Objects/heart.png" type="Texture" id=2]
+[ext_resource path="res://Screens/GameOver.tscn" type="PackedScene" id=3]
 
 [node name="UI" type="Control"]
 pause_mode = 2
@@ -62,38 +63,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.470588 )
 
-[node name="GameOver" type="Control" parent="Overlay"]
+[node name="GameOver" parent="Overlay" instance=ExtResource( 3 )]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Retry" type="Button" parent="Overlay/GameOver"]
-margin_left = 448.0
-margin_top = 336.0
-margin_right = 576.0
-margin_bottom = 376.0
-text = "Retry"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GameOverLabel" type="Label" parent="Overlay/GameOver"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 455.5
-margin_top = 273.0
-margin_right = 528.5
-margin_bottom = 287.0
-custom_colors/font_color = Color( 0.952941, 0.054902, 0.054902, 1 )
-text = "Game Over"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Pause" type="Control" parent="Overlay"]
 pause_mode = 2
@@ -155,7 +126,6 @@ text = "Menu"
 wait_time = 0.2
 one_shot = true
 
-[connection signal="button_up" from="Overlay/GameOver/Retry" to="." method="_on_Retry_button_up"]
 [connection signal="button_up" from="Overlay/Pause/VBoxContainer/Continue" to="." method="_on_Continue_button_up"]
 [connection signal="button_up" from="Overlay/Pause/VBoxContainer/Retry" to="." method="_on_Retry_button_up"]
 [connection signal="button_up" from="Overlay/Pause/VBoxContainer/Menu" to="." method="_on_Menu_button_up"]

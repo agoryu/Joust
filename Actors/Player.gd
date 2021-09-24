@@ -4,6 +4,7 @@ onready var jumpTimer = $JumpTimer
 onready var animated_sprite = $AnimatedSprite
 onready var audio_walk = $AudioWalk
 onready var audio_fly = $AudioFly
+onready var audio_attack = $AudioAttack
 
 func _physics_process(delta):
 	_velocity = move_and_slide(calculate_move_velocity(), Vector2.UP)
@@ -66,10 +67,11 @@ func animate_sprite():
 
 func _on_Spear_body_entered(body):
 	body.die()
+	audio_attack.play()
 	Game.shake_screen()
 
 func _on_Horse_area_entered(area):
-	_velocity.x *= -2 
+	_velocity.x *= -1.5
 
 func _on_Knight_area_entered(area):
 	Game.player_touch()
@@ -77,3 +79,8 @@ func _on_Knight_area_entered(area):
 func _on_AnimatedSprite_frame_changed():
 	if !audio_walk.playing:
 		audio_walk.play()
+
+func _on_Spear_area_entered(area):
+	area.die()
+	audio_attack.play()
+	Game.shake_screen()

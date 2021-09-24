@@ -1,6 +1,9 @@
 extends Control
 
 export var level_scene = "res://Game/Joust.tscn"
+export var scores_scene = "res://Screens/Scores.tscn"
+export var credits_scene = "res://Screens/Credits.tscn"
+
 onready var buttons : Array = [
 	$VBoxContainer/Start, 
 	$VBoxContainer/Scores,
@@ -12,6 +15,9 @@ onready var timer : Timer = $Timer
 onready var tree = get_tree()
 
 var button_selected : int = 0
+
+func _ready():
+	Game.load_data()
 
 func _process(delta):
 	buttons[button_selected].grab_focus()
@@ -32,3 +38,9 @@ func _on_Start_button_up():
 func _on_Quit_button_up():
 	tree.quit()
 	
+func _on_Scores_button_up():
+	tree.change_scene(scores_scene)
+
+
+func _on_Credits_button_up():
+	tree.change_scene(credits_scene)

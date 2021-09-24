@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Assets/ostrich_right.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Actors/Assets/ostrich_jump.png" type="Texture" id=5]
 [ext_resource path="res://Actors/Assets/walk.wav" type="AudioStream" id=6]
 [ext_resource path="res://Actors/Assets/fly.wav" type="AudioStream" id=7]
+[ext_resource path="res://Actors/Assets/attack.wav" type="AudioStream" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -25,25 +26,25 @@ region = Rect2( 500, 0, 250, 250 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "run",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 24.0523, 1.63751 )
+extents = Vector2( 16.6073, 1.63751 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 6.12104, 8.26477 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 24, 19.7972 )
+extents = Vector2( 18.539, 19.7972 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 5.82916, 9.15568 )
@@ -74,12 +75,11 @@ scale = Vector2( 4, 4 )
 collision_layer = 8
 collision_mask = 4
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Spear"]
-position = Vector2( -5.19139, -2.31507 )
+position = Vector2( 2.3066, -2.38514 )
 shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="AnimatedSprite/Spear"]
@@ -145,7 +145,13 @@ attenuation = 4.43828
 [node name="AudioFly" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
+attenuation = 2.37841
+
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="area_entered" from="AnimatedSprite/Spear" to="." method="_on_Spear_area_entered"]
 [connection signal="body_entered" from="AnimatedSprite/Spear" to="." method="_on_Spear_body_entered"]
 [connection signal="area_entered" from="AnimatedSprite/Knight" to="." method="_on_Knight_area_entered"]
 [connection signal="area_entered" from="AnimatedSprite/Horse" to="." method="_on_Horse_area_entered"]

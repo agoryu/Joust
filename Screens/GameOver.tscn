@@ -1,0 +1,196 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Screens/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://Screens/Assets/medieval_button.tres" type="Theme" id=2]
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -220.0
+margin_right = 33.0
+margin_bottom = -206.0
+custom_colors/font_color = Color( 0.952941, 0.054902, 0.054902, 1 )
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -108.0
+margin_right = 64.0
+margin_bottom = -94.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxScore" type="HBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -20.0
+margin_right = 128.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="HBoxScore"]
+margin_top = 13.0
+margin_right = 126.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "Score : "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="HBoxScore"]
+margin_left = 130.0
+margin_top = 13.0
+margin_right = 256.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -124.0
+margin_right = 128.0
+margin_bottom = -84.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_top = 13.0
+margin_right = 82.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "A"
+align = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+margin_left = 86.0
+margin_top = 13.0
+margin_right = 169.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "A"
+align = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer"]
+margin_left = 173.0
+margin_top = 13.0
+margin_right = 256.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "A"
+align = 1
+
+[node name="NameLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -188.0
+margin_right = 64.0
+margin_bottom = -172.0
+custom_colors/font_color = Color( 0.85098, 0.905882, 0.180392, 1 )
+text = "Your Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptName" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -44.0
+margin_right = 64.0
+margin_bottom = -24.0
+theme = ExtResource( 2 )
+text = "OK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -280.0
+margin_right = 64.0
+margin_bottom = -184.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" type="Button" parent="VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 46.0
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Button" parent="VBoxContainer"]
+margin_top = 50.0
+margin_right = 128.0
+margin_bottom = 96.0
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="button_up" from="AcceptName" to="." method="_on_AcceptName_button_up"]
+[connection signal="button_up" from="VBoxContainer/Menu" to="." method="_on_Menu_button_up"]

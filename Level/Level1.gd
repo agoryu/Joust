@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Level1
 
+export var menu_presentation : bool = false
+
 onready var spawn_locations = [$Spawn1, $Spawn2, $Spawn3, $Spawn4]
 onready var Puppet = load("res://Actors/Puppet.tscn")
 onready var Armor_Puppet = load("res://Actors/ArmorPuppet.tscn")
@@ -13,19 +15,20 @@ var time : float = 90.0
 var spawn_index: int = 1#rand_range(0, 4)
 
 func _ready():
-	Game.connect("enemy_kill", self, "next_move")
-	spawn_enemy()
+	if !menu_presentation:
+		Game.connect("enemy_kill", self, "next_move")
+		spawn_enemy()
 	
 func next_move():
 	spawn_enemy()
 	
 func spawn_enemy():
 	var position_enemy = spawn_locations[spawn_index].position
-	var enemy = Puppet.instance()
-	#if Game.score <= 5:
-	#	enemy = Puppet.instance() as Enemy
-	#else:
-	#	enemy = Armor_Puppet.instance() as Enemy
+	var enemy = Ostrich_Enemy.instance()
+#	if Game.score <= 5:
+#		enemy = Puppet.instance() as Enemy
+#	else:
+#		enemy = Ostrich_Enemy.instance() as Enemy
 		
 	if spawn_index % 2 == 0:
 		enemy.last_direction = Actor.LEFT
@@ -36,6 +39,6 @@ func spawn_enemy():
 	spawn_index = (spawn_index + 1) % 4
 
 func _process(delta):
-	time += 0.001
+	time += 0.05
 	time = fmod(time, 240.0)
 	background.material.set_shader_param("time", time)
