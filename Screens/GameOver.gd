@@ -7,6 +7,7 @@ onready var box_container = $HBoxContainer
 onready var box_score = $HBoxScore
 onready var score_value = $HBoxScore/Score
 onready var timer = $Timer
+onready var animation = $HBoxContainer/AnimationPlayer
 
 onready var label = [$HBoxContainer/Label, $HBoxContainer/Label2, $HBoxContainer/Label3]
 onready var letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -15,6 +16,7 @@ var player_name = []
 var letter_selected = 0
 var label_selected = 0
 var accepted = false
+var is_ok = false
 var button_selected = 0
 
 const menu_scene = "res://Screens/Menu.tscn"
@@ -22,23 +24,33 @@ const menu_scene = "res://Screens/Menu.tscn"
 func _unhandled_input(event):
 	if self.visible:
 		if !accepted:
-			if event.is_action_pressed("ui_up"):
+			if event.is_action_pressed("ui_up") and !is_ok:
 				letter_selected = fmod(letter_selected + 1, 26) 
 				label[label_selected].text = letter[letter_selected]
 				label[label_selected].grab_focus()
-			if event.is_action_pressed("ui_down"):
+			if event.is_action_pressed("ui_down") and !is_ok:
 				letter_selected = fmod(letter_selected - 1, 26) 
 				label[label_selected].text = letter[letter_selected]
 				label[label_selected].grab_focus()
-			if event.is_action_released("ui_accept"):
+			if event.is_action_released("ui_accept") and !is_ok:
 				if label_selected == 2:
 					player_name.push_back(letter[letter_selected])
 					button_ok.visible = true
 					button_ok.grab_focus()
+					is_ok = true
 				else:
 					label_selected += 1
 					player_name.push_back(letter[letter_selected])
 					letter_selected = 0
+					animation.stop()
+			if event.is_action_released("ui_back"):
+				if is_ok:
+					button_ok.visible = false
+					button_ok.release_focus()
+					is_ok = false
+				elif label_selected != 0:
+					label_selected -= 1
+					player_name.push_back(letter[letter_selected])
 		else:
 			if event.is_action_pressed("ui_up"):
 				timer.start()
@@ -66,3 +78,11 @@ func _on_AcceptName_button_up():
 func _on_Menu_button_up():
 	get_tree().change_scene(menu_scene)
 	get_tree().paused = false
+	
+func _process(delta):
+	if !accepted and !is_ok and !animation.is_playing():
+		animation.play(String(label_selected))
+
+
+func _on_Retry_button_up():
+	Game.retry()

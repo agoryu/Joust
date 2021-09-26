@@ -1,6 +1,5 @@
 extends Control
 
-export var level_scene = "res://Game/Joust.tscn"
 export var scores_scene = "res://Screens/Scores.tscn"
 export var credits_scene = "res://Screens/Credits.tscn"
 
@@ -33,14 +32,13 @@ func _process(delta):
 		button_selected = wrapi(button_selected - 1, 0, nb_button)
 
 func _on_Start_button_up():
-	tree.change_scene(level_scene)
+	Game.retry()
 
 func _on_Quit_button_up():
 	tree.quit()
 	
 func _on_Scores_button_up():
 	tree.change_scene(scores_scene)
-
 
 func _on_Credits_button_up():
 	tree.change_scene(credits_scene)

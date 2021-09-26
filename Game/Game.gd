@@ -5,6 +5,7 @@ signal enemy_kill
 signal game_over
 signal player_touch
 signal shake_screen
+signal retry
 
 onready var CustomSortScore = preload("res://Scripts/CustomSortScore.gd")
 onready var SAVE_PATH = "res://scores.json"
@@ -62,3 +63,9 @@ func save_score(score: int, player_name):
 	save_file.open(SAVE_PATH, File.WRITE)
 	save_file.store_line(to_json(scores))
 	save_file.close()
+
+func retry():
+	get_tree().change_scene("res://Game/Joust.tscn")
+	get_tree().paused = false
+	Game.life = 3
+	Game.score = 0

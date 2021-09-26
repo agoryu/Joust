@@ -9,8 +9,9 @@ onready var Puppet = load("res://Actors/Puppet.tscn")
 onready var Armor_Puppet = load("res://Actors/ArmorPuppet.tscn")
 onready var Ostrich_Enemy = load("res://Actors/OstrichEnemy.tscn")
 onready var background = $Background
+onready var path_follow_sun = $Path2DSun/PathFollow2D
 
-var time : float = 90.0
+var time : float = 63.0
 
 var spawn_index: int = 1#rand_range(0, 4)
 
@@ -39,6 +40,12 @@ func spawn_enemy():
 	spawn_index = (spawn_index + 1) % 4
 
 func _process(delta):
-	time += 0.05
+	time += 0.035
 	time = fmod(time, 240.0)
 	background.material.set_shader_param("time", time)
+	
+	print(time)
+	if time > 63.0 and time < 230.0:
+		var curve_length = $Path2DSun.get_curve().get_baked_length()
+		var offset_sun = ((220 - 63) * 100000) / curve_length
+		path_follow_sun.set_offset(path_follow_sun.get_offset()+offset_sun*delta)
