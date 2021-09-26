@@ -44,7 +44,6 @@ func _process(delta):
 	time = fmod(time, 240.0)
 	background.material.set_shader_param("time", time)
 	
-	print(time)
 	if time > 63.0 and time < 230.0:
 		var curve_length = $Path2DSun.get_curve().get_baked_length()
 		var offset_sun = ((220 - 63) * 100000) / curve_length
