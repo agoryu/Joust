@@ -25,11 +25,13 @@ func next_move():
 	
 func spawn_enemy():
 	var position_enemy = spawn_locations[spawn_index].position
-	var enemy = Ostrich_Enemy.instance()
-#	if Game.score <= 5:
-#		enemy = Puppet.instance() as Enemy
-#	else:
-#		enemy = Ostrich_Enemy.instance() as Enemy
+	var enemy#Ostrich_Enemy.instance()
+	if Game.score < 5:
+		enemy = Puppet.instance() as Enemy
+	elif Game.score >= 5 and Game.score < 10:
+		enemy = Armor_Puppet.instance() as Enemy
+	else:
+		enemy = Ostrich_Enemy.instance() as Enemy
 		
 	if spawn_index % 2 == 0:
 		enemy.last_direction = Actor.LEFT
@@ -40,7 +42,7 @@ func spawn_enemy():
 	spawn_index = (spawn_index + 1) % 4
 
 func _process(delta):
-	time += 0.035
+	time += 0.024
 	time = fmod(time, 240.0)
 	background.material.set_shader_param("time", time)
 	
@@ -48,3 +50,5 @@ func _process(delta):
 		var curve_length = $Path2DSun.get_curve().get_baked_length()
 		var offset_sun = ((220 - 63) * 100000) / curve_length
 		path_follow_sun.set_offset(path_follow_sun.get_offset()+offset_sun*delta)
+	else:
+		path_follow_sun.set_offset(0)

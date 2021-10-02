@@ -43,6 +43,7 @@ func _unhandled_input(event):
 					player_name.push_back(letter[letter_selected])
 					letter_selected = 0
 					animation.stop()
+					label[label_selected - 1].valign = 1
 			if event.is_action_released("ui_back"):
 				if is_ok:
 					button_ok.visible = false
@@ -82,7 +83,6 @@ func _on_Menu_button_up():
 func _process(delta):
 	if !accepted and !is_ok and !animation.is_playing():
 		animation.play(String(label_selected))
-
 
 func _on_Retry_button_up():
 	Game.retry()

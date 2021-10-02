@@ -26,7 +26,7 @@ func calculate_move_velocity():
 	return out
 
 func _on_Horse_area_entered(area):
-	_velocity.x *= -2
+	_velocity.x = (_velocity.x + bump_value) * -1
 
 func animation():
 	if !is_on_floor():

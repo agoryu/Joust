@@ -66,12 +66,15 @@ func animate_sprite():
 		nb_jump = NB_JUMP_MAX
 
 func _on_Spear_body_entered(body):
-	body.die()
-	audio_attack.play()
-	Game.shake_screen()
+	if body is Knight or body is Puppet or body is ArmorPuppet:
+		body.die()
+		audio_attack.play()
+		Game.shake_screen()
+	else:
+		bump()
 
 func _on_Horse_area_entered(area):
-	_velocity.x *= -1.5
+	bump()
 
 func _on_Knight_area_entered(area):
 	Game.player_touch()
@@ -81,6 +84,12 @@ func _on_AnimatedSprite_frame_changed():
 		audio_walk.play()
 
 func _on_Spear_area_entered(area):
-	area.die()
-	audio_attack.play()
-	Game.shake_screen()
+	if area is Knight:
+		area.die()
+		audio_attack.play()
+		Game.shake_screen()
+	else:
+		bump()
+	
+func bump():
+	_velocity.x = (_velocity.x + bump_value) * -1

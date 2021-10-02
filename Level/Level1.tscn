@@ -131,13 +131,13 @@ z_index = 2
 texture = ExtResource( 5 )
 
 [node name="Path2DSun" type="Path2D" parent="."]
-position = Vector2( -62.6939, 576 )
-scale = Vector2( 0.0527211, 0.0571429 )
+position = Vector2( -62.6939, 552 )
+scale = Vector2( 0.0527211, 0.0544643 )
 curve = SubResource( 5 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2DSun"]
-position = Vector2( 39.9999, 20.001 )
-rotation = -0.978102
+position = Vector2( -480, -0.000976562 )
+rotation = -0.920085
 
 [node name="Sun" type="Sprite" parent="Path2DSun/PathFollow2D"]
 position = Vector2( -273.88, -442.481 )

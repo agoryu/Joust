@@ -38,7 +38,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 16.6073, 1.63751 )
+extents = Vector2( 10.6667, 1.63751 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 6.12104, 8.26477 )
@@ -73,13 +73,13 @@ __meta__ = {
 position = Vector2( 93.1169, -62.3032 )
 scale = Vector2( 4, 4 )
 collision_layer = 8
-collision_mask = 4
+collision_mask = 84
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Spear"]
-position = Vector2( 2.3066, -2.38514 )
+position = Vector2( 8.77444, -2.55524 )
 shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="AnimatedSprite/Spear"]

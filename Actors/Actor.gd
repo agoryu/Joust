@@ -8,7 +8,7 @@ export (int) var gravity = 3000.0
 export var speed: = Vector2(400.0, 600.0)
 export var acceleration = 7
 export var NB_JUMP_MAX = 5
-
+export var bump_value = 200.0
 
 const RIGHT: int = 1
 const LEFT: int = -1
