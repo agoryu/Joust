@@ -64,7 +64,7 @@ _global_script_class_icons={
 
 config/name="Joust"
 run/main_scene="res://Screens/Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://cover.png"
 
 [autoload]
 

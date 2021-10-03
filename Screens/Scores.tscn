@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Screens/Scores.gd" type="Script" id=1]
+[ext_resource path="res://Screens/Assets/menu.png" type="Texture" id=2]
+[ext_resource path="res://Screens/Assets/medieval_button.tres" type="Theme" id=3]
+[ext_resource path="res://Screens/Assets/TaylorGothic.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
 
 [node name="Scores" type="Control"]
 anchor_right = 1.0
@@ -10,58 +16,67 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.45098, 0.509804, 0.909804, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoresLabel" type="Label" parent="."]
-margin_right = 1024.0
-margin_bottom = 50.0
-size_flags_vertical = 7
-custom_colors/font_color = Color( 0.835294, 0.835294, 0.0588235, 1 )
-text = "Scores"
-align = 1
-valign = 1
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -324.0
+margin_right = 320.0
+margin_bottom = 316.0
+texture = ExtResource( 2 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 64.0
-margin_bottom = -48.0
+margin_bottom = -64.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 45.0
+margin_bottom = 43.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_top = 15.0
+margin_top = 14.0
 margin_right = 510.0
-margin_bottom = 29.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_left = 514.0
-margin_top = 15.0
+margin_top = 14.0
 margin_right = 1024.0
-margin_bottom = 29.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 49.0
+margin_top = 47.0
 margin_right = 1024.0
-margin_bottom = 94.0
+margin_bottom = 91.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer2"]
@@ -69,7 +84,9 @@ margin_top = 15.0
 margin_right = 510.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer2"]
@@ -78,36 +95,40 @@ margin_top = 15.0
 margin_right = 1024.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 98.0
+margin_top = 95.0
 margin_right = 1024.0
-margin_bottom = 143.0
+margin_bottom = 138.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer3"]
-margin_top = 15.0
+margin_top = 14.0
 margin_right = 510.0
-margin_bottom = 29.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer3"]
 margin_left = 514.0
-margin_top = 15.0
+margin_top = 14.0
 margin_right = 1024.0
-margin_bottom = 29.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 147.0
+margin_top = 142.0
 margin_right = 1024.0
-margin_bottom = 192.0
+margin_bottom = 186.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer4"]
@@ -115,7 +136,9 @@ margin_top = 15.0
 margin_right = 510.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer4"]
@@ -124,36 +147,40 @@ margin_top = 15.0
 margin_right = 1024.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 196.0
+margin_top = 190.0
 margin_right = 1024.0
-margin_bottom = 242.0
+margin_bottom = 233.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer5"]
-margin_top = 16.0
+margin_top = 14.0
 margin_right = 510.0
-margin_bottom = 30.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer5"]
 margin_left = 514.0
-margin_top = 16.0
+margin_top = 14.0
 margin_right = 1024.0
-margin_bottom = 30.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 246.0
+margin_top = 237.0
 margin_right = 1024.0
-margin_bottom = 291.0
+margin_bottom = 281.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer6"]
@@ -161,7 +188,9 @@ margin_top = 15.0
 margin_right = 510.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer6"]
@@ -170,13 +199,14 @@ margin_top = 15.0
 margin_right = 1024.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 295.0
+margin_top = 285.0
 margin_right = 1024.0
-margin_bottom = 340.0
+margin_bottom = 329.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer7"]
@@ -184,7 +214,9 @@ margin_top = 15.0
 margin_right = 510.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer7"]
@@ -193,36 +225,40 @@ margin_top = 15.0
 margin_right = 1024.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 344.0
+margin_top = 333.0
 margin_right = 1024.0
-margin_bottom = 389.0
+margin_bottom = 376.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer8"]
-margin_top = 15.0
+margin_top = 14.0
 margin_right = 510.0
-margin_bottom = 29.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer8"]
 margin_left = 514.0
-margin_top = 15.0
+margin_top = 14.0
 margin_right = 1024.0
-margin_bottom = 29.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 393.0
+margin_top = 380.0
 margin_right = 1024.0
-margin_bottom = 438.0
+margin_bottom = 424.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer9"]
@@ -230,7 +266,9 @@ margin_top = 15.0
 margin_right = 510.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer9"]
@@ -239,30 +277,34 @@ margin_top = 15.0
 margin_right = 1024.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="HBoxContainer10" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 442.0
+margin_top = 428.0
 margin_right = 1024.0
-margin_bottom = 488.0
+margin_bottom = 472.0
 size_flags_vertical = 7
 
 [node name="PlayerName" type="Label" parent="VBoxContainer/HBoxContainer10"]
-margin_top = 16.0
+margin_top = 15.0
 margin_right = 510.0
-margin_bottom = 30.0
+margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
+align = 2
 valign = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer10"]
 margin_left = 514.0
-margin_top = 16.0
+margin_top = 15.0
 margin_right = 1024.0
-margin_bottom = 30.0
+margin_bottom = 29.0
 size_flags_horizontal = 3
-align = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.623529, 0.345098, 0.00784314, 1 )
 valign = 1
 
 [node name="Menu" type="Button" parent="."]
@@ -274,6 +316,7 @@ margin_left = -64.0
 margin_top = -40.0
 margin_right = 64.0
 margin_bottom = -16.0
+theme = ExtResource( 3 )
 text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
