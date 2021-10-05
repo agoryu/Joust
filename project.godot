@@ -12,42 +12,42 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Actor",
 "language": "GDScript",
-"path": "res://Actors/Actor.gd"
+"path": "res://Scripts/Actors/Actor.gd"
 }, {
-"base": "Actor",
+"base": "Enemy",
 "class": "ArmorPuppet",
 "language": "GDScript",
-"path": "res://Actors/ArmorPuppet.gd"
+"path": "res://Scripts/Actors/ArmorPuppet.gd"
 }, {
 "base": "Node",
 "class": "CustomSortScore",
 "language": "GDScript",
-"path": "res://Scripts/CustomSortScore.gd"
+"path": "res://Scripts/Sort/CustomSortScore.gd"
 }, {
 "base": "Actor",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Actors/Enemy.gd"
+"path": "res://Scripts/Actors/Enemy.gd"
 }, {
 "base": "Area2D",
 "class": "Knight",
 "language": "GDScript",
-"path": "res://Actors/Enemy_Knight.gd"
+"path": "res://Scripts/Actors/Enemy_Knight.gd"
 }, {
 "base": "Node2D",
 "class": "Level1",
 "language": "GDScript",
-"path": "res://Level/Level1.gd"
+"path": "res://Scripts/Levels/Level1.gd"
 }, {
 "base": "Enemy",
 "class": "OstrichEnemy",
 "language": "GDScript",
-"path": "res://Actors/OstrichEnemy.gd"
+"path": "res://Scripts/Actors/OstrichEnemy.gd"
 }, {
 "base": "Enemy",
 "class": "Puppet",
 "language": "GDScript",
-"path": "res://Actors/Puppet.gd"
+"path": "res://Scripts/Actors/Puppet.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
@@ -63,12 +63,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Joust"
-run/main_scene="res://Screens/Menu.tscn"
+run/main_scene="res://Scenes/Screens/MainScreen.tscn"
 config/icon="res://cover.png"
 
 [autoload]
 
-Game="*res://Game/Game.gd"
+Game="*res://Scripts/Game/Game.gd"
 
 [input]
 

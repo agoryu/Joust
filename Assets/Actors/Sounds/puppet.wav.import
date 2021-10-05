@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/puppet.wav-c171edd1e0bc5ce364104c156641ec06.sample"
+
+[deps]
+
+source_file="res://Assets/Actors/Sounds/puppet.wav"
+dest_files=[ "res://.import/puppet.wav-c171edd1e0bc5ce364104c156641ec06.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Screens/UI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Actors/Sprites/heart.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Screens/GameOver.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Screens/Themes/TaylorGothic.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/Screens/Pause.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 4 )
+
+[node name="UI" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.297302
+margin_top = -0.297302
+margin_right = -0.297302
+margin_bottom = -0.297302
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="."]
+margin_right = 128.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -95.7026
+margin_top = 9.0
+margin_right = 0.297363
+margin_bottom = 32.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Heart1" type="TextureRect" parent="HBoxContainer"]
+margin_right = 25.0
+margin_bottom = 23.0
+texture = ExtResource( 2 )
+
+[node name="Heart2" type="TextureRect" parent="HBoxContainer"]
+margin_left = 29.0
+margin_right = 54.0
+margin_bottom = 23.0
+texture = ExtResource( 2 )
+
+[node name="Heart3" type="TextureRect" parent="HBoxContainer"]
+margin_left = 58.0
+margin_right = 83.0
+margin_bottom = 23.0
+texture = ExtResource( 2 )
+
+[node name="Overlay" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.470588 )
+
+[node name="GameOver" parent="Overlay" instance=ExtResource( 3 )]
+visible = false
+
+[node name="Pause" parent="Overlay" instance=ExtResource( 5 )]
+visible = false
+
+[connection signal="set_pause" from="Overlay/Pause" to="." method="_on_Pause_set_pause"]
