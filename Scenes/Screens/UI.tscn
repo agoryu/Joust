@@ -38,31 +38,35 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -95.7026
+margin_left = -165.0
 margin_top = 9.0
-margin_right = 0.297363
-margin_bottom = 32.0
+margin_bottom = 53.0
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Heart1" type="TextureRect" parent="HBoxContainer"]
-margin_right = 25.0
-margin_bottom = 23.0
+margin_right = 52.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
 texture = ExtResource( 2 )
+expand = true
 
 [node name="Heart2" type="TextureRect" parent="HBoxContainer"]
-margin_left = 29.0
-margin_right = 54.0
-margin_bottom = 23.0
+margin_left = 56.0
+margin_right = 108.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
 texture = ExtResource( 2 )
+expand = true
 
 [node name="Heart3" type="TextureRect" parent="HBoxContainer"]
-margin_left = 58.0
-margin_right = 83.0
-margin_bottom = 23.0
+margin_left = 112.0
+margin_right = 165.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
 texture = ExtResource( 2 )
+expand = true
 
 [node name="Overlay" type="ColorRect" parent="."]
 visible = false

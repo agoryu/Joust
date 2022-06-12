@@ -4,6 +4,7 @@ onready var tree = get_tree()
 
 func _ready():
 	Game.connect("game_over", self, "game_over")
+	Game.player = $Player
 	
 func game_over():
 	tree.paused = true

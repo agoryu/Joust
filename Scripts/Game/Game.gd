@@ -7,12 +7,14 @@ signal player_touch
 signal shake_screen
 signal retry
 
+
 onready var CustomSortScore = preload("res://Scripts/Sort/CustomSortScore.gd")
 onready var SAVE_PATH = "res://scores.json"
 onready var save_file = File.new()
 
 var score = 0 setget set_score
 var life = 3
+var player
 
 var scores = Dictionary()
 

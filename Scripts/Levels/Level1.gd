@@ -9,7 +9,7 @@ onready var Puppet = load("res://Scenes/Actors/Puppet.tscn")
 onready var Armor_Puppet = load("res://Scenes/Actors/ArmorPuppet.tscn")
 onready var Ostrich_Enemy = load("res://Scenes/Actors/OstrichEnemy.tscn")
 onready var background = $Background
-onready var path_follow_sun = $Path2DSun/PathFollow2D
+onready var sun = $Sun
 
 var time : float = 63.0
 
@@ -45,10 +45,3 @@ func _process(delta):
 	time += 0.024
 	time = fmod(time, 240.0)
 	background.material.set_shader_param("time", time)
-	
-	if time > 63.0 and time < 230.0:
-		var curve_length = $Path2DSun.get_curve().get_baked_length()
-		var offset_sun = ((220 - 63) * 100000) / curve_length
-		path_follow_sun.set_offset(path_follow_sun.get_offset()+offset_sun*delta)
-	else:
-		path_follow_sun.set_offset(0)

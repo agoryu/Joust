@@ -47,11 +47,14 @@ func switch_direction():
 		
 func animate_sprite():
 	if animated_sprite.is_playing():
-		if _velocity.x == 0 or _velocity.y != 0:
+		if current_direction == 0:
 			animated_sprite.stop()
 			animated_sprite.frame = 1
-	elif _velocity.x != 0 and _velocity.y == 0:
-		animated_sprite.play("run")
+	else:
+		if current_direction != 0 and _velocity.y == 0:
+			animated_sprite.play("run")
+		if is_jump and animated_sprite.is_playing(): 
+			animated_sprite.play("jump")
 	
 	# First jump
 	if !is_jump:
